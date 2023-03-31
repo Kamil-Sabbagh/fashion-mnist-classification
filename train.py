@@ -6,7 +6,7 @@ from fashion_mnist_classification_nn_pytorch import (
     FashionMNISTDataModule,
     FashionMNISTClassifier,
     FashionMNISTClassifier2,
-    predict_an_image
+    predict_an_image,
 )
 
 
@@ -14,7 +14,7 @@ from fashion_mnist_classification_nn_pytorch import (
 def train(cfg: DictConfig):
 
     data_module = FashionMNISTDataModule(batch_size=cfg.batch_size)
-    
+
     if cfg.classifier == "weak":
 
         model = FashionMNISTClassifier(
@@ -22,29 +22,32 @@ def train(cfg: DictConfig):
         )
 
         trainer = Trainer(
-        max_epochs=cfg.epochs,
-        devices=1,
-        accelerator="cuda" if torch.cuda.is_available() else "cpu")
+            max_epochs=cfg.epochs,
+            devices=1,
+            accelerator="cuda" if torch.cuda.is_available() else "cpu",
+        )
 
         trainer.fit(model, datamodule=data_module)
         trainer.test(model, datamodule=data_module)
 
-        if cfg.example :
+        if cfg.example:
             predict_an_image(data_module, model)
 
     else:
         model2 = FashionMNISTClassifier2(
-            optimizer_name=cfg.optimizer.name, learning_rate=cfg.optimizer.lr)
-        
+            optimizer_name=cfg.optimizer.name, learning_rate=cfg.optimizer.lr
+        )
+
         trainer2 = Trainer(
             max_epochs=cfg.epochs,
             devices=1,
-            accelerator="cuda" if torch.cuda.is_available() else "cpu")
+            accelerator="cuda" if torch.cuda.is_available() else "cpu",
+        )
 
         trainer2.fit(model2, datamodule=data_module)
         trainer2.test(model2, datamodule=data_module)
 
-        if cfg.example :
+        if cfg.example:
             predict_an_image(data_module, model)
 
 

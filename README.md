@@ -4,10 +4,10 @@ This repository contains code for training a neural network to classify images f
 
 ## Requirements
 
-- Python 3
-- PyTorch
-- PyTorch Lightning
-- Hydra
+all the needed requirements can be downloaded using this line:
+```
+pip install -r requirements.txt
+```
 
 ## Files
 
