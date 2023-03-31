@@ -9,6 +9,7 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
+
 class FashionMNISTDataModule(pl.LightningDataModule):
     def __init__(self, batch_size=64):
         super().__init__()
@@ -130,7 +131,7 @@ class FashionMNISTClassifier2(pl.LightningModule):
                     ("fc4", nn.Linear(98, 49)),
                     ("relu4", nn.ReLU()),
                     ("output", nn.Linear(49, 10)),
-                    ("logsoftmax", nn.LogSoftmax(dim=1)),
+                    ("logsoftmax", nn.LogSoftmax(dim=1))
                 ]
             )
         )
@@ -172,27 +173,22 @@ class FashionMNISTClassifier2(pl.LightningModule):
         return loss
 
 
-
 def predict_an_image(data_module, model):
-
     def visualize_prediction(image, label, proba, class_names):
         fig, (ax1, ax2) = plt.subplots(figsize=(13, 6), nrows=1, ncols=2)
-        ax1.axis('off')
+        ax1.axis("off")
         ax1.imshow(image.cpu().numpy().squeeze())
         ax1.set_title(class_names[label.item()])
         ax2.bar(range(10), proba.detach().cpu().numpy().squeeze())
         ax2.set_xticks(range(10))
-        ax2.set_xticklabels(class_names, size='small')
-        ax2.set_title('Predicted Probabilities')
+        ax2.set_xticklabels(class_names, size="small")
+        ax2.set_title("Predicted Probabilities")
         plt.tight_layout()
         plt.show()
 
+    device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-    
     data_module.setup(stage="test")
-
 
     test_dl = data_module.test_dataloader()
     dataiter = iter(test_dl)
@@ -209,7 +205,18 @@ def predict_an_image(data_module, model):
         proba = torch.exp(model(img))
 
     # Class names
-    desc = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot']
+    desc = [
+        "T-shirt/top",
+        "Trouser",
+        "Pullover",
+        "Dress",
+        "Coat",
+        "Sandal",
+        "Shirt",
+        "Sneaker",
+        "Bag",
+        "Ankle Boot",
+    ]
 
     # Visualize the prediction
     visualize_prediction(images[index], label, proba, desc)

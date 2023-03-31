@@ -24,7 +24,7 @@ def train(cfg: DictConfig):
         trainer = Trainer(
             max_epochs=cfg.epochs,
             devices=1,
-            accelerator="cuda" if torch.cuda.is_available() else "cpu",
+            accelerator="cuda" if torch.cuda.is_available() else "cpu"
         )
 
         trainer.fit(model, datamodule=data_module)
@@ -41,7 +41,7 @@ def train(cfg: DictConfig):
         trainer2 = Trainer(
             max_epochs=cfg.epochs,
             devices=1,
-            accelerator="cuda" if torch.cuda.is_available() else "cpu",
+            accelerator="cuda" if torch.cuda.is_available() else "cpu"
         )
 
         trainer2.fit(model2, datamodule=data_module)

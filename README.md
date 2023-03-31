@@ -42,7 +42,7 @@ To train the model using the Adam optimizer with a learning rate of 0.001, batch
 ```
 python3 train.py optimizer.name=adam optimizer.lr=0.001 batch_size=64 epochs=20 classifier=powerful example=True
 ```
-
+ 
 ### Results
 
 The training and validation losses and accuracies will be logged after each epoch. After training, the model will be saved in the trained_models directory with the current timestamp and configuration details.

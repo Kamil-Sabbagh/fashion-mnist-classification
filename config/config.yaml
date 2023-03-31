@@ -4,7 +4,7 @@ optimizer:
 
 batch_size: 64
 epochs: 10
-classifier : powerful 
+classifier : powerful  
 example: False
 
 _version : 1.0
