@@ -1,0 +1,10 @@
+optimizer:
+  name: sgd
+  lr: 0.001
+
+batch_size: 64
+epochs: 10
+
+_version : 1.0
+
+
