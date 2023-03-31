@@ -26,13 +26,13 @@ There are two different models available:
 To train the neural network, run the following command:\
 
 ```
-python3 train.py optimizer.name=<optimizer_name> optimizer.lr=<learning_rate> batch_size=<batch_size> epochs=<epochs> model=<model_type>
+python3 train.py optimizer.name=<optimizer_name> optimizer.lr=<learning_rate> batch_size=<batch_size> epochs=<epochs> classifier=<model_type>, example=<showing_example_or_not>
 ```
 - `optimizer.name`: Can be "adam" or "sgd".
 - `optimizer.lr`: Learning rate for the optimizer, can be any positive float
 - `batch_size`: Batch size for training and validation, can be any positive integer
 - `epochs`: Number of epochs to train for, can be any positive integer
-- `model_type`: Model type to use for training, can be "weak" or "powerful"
+- `classifier`: Model type to use for training, can be "weak" or "powerful"
 - `example` : the trained model will predict a single random image from the dataset.
 
 ### Example
@@ -40,7 +40,7 @@ python3 train.py optimizer.name=<optimizer_name> optimizer.lr=<learning_rate> ba
 To train the model using the Adam optimizer with a learning rate of 0.001, batch size of 64, for 20 epochs and the first classifier type, run the following command:
 
 ```
-python3 train.py optimizer.name=adam optimizer.lr=0.001 batch_size=64 epochs=20 model=powerful example=True
+python3 train.py optimizer.name=adam optimizer.lr=0.001 batch_size=64 epochs=20 classifier=powerful example=True
 ```
 
 ### Results
