@@ -40,7 +40,7 @@ python3 train.py optimizer.name=<optimizer_name> optimizer.lr=<learning_rate> ba
 To train the model using the Adam optimizer with a learning rate of 0.001, batch size of 64, for 20 epochs and the first classifier type, run the following command:
 
 ```
-python3 train.py optimizer.name=adam optimizer.lr=0.001 batch_size=64 epochs=20 model=powerful
+python3 train.py optimizer.name=adam optimizer.lr=0.001 batch_size=64 epochs=20 model=powerful example=True
 ```
 
 ### Results
